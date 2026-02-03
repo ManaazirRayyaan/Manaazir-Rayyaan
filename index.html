@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manaazir Rayyaan | Full Stack Developer & Graphic Designer</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Teko:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Space Grotesk", "sans-serif"],
+              display: ["Teko", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- esm.sh import map -->
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@19",
+          "react-dom/client": "https://esm.sh/react-dom@19/client",
+          "lucide-react": "https://esm.sh/lucide-react"
+        }
+      }
+    </script>
+
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #08090b;
+        --ice: #f5f7fa;
+        --silver: rgba(255, 255, 255, 0.18);
+        --red: #ff2d2d;
+        --blue: #2d6bff;
+      }
+      body {
+        background: var(--ink);
+        color: var(--ice);
+      }
+      .glass {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.12),
+          rgba(255, 255, 255, 0.02)
+        );
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+      }
+      .text-gradient {
+        background: linear-gradient(90deg, #ffffff, #9aa0aa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .silver-overlay {
+        background: radial-gradient(
+          circle at 20% 20%,
+          rgba(255, 255, 255, 0.2),
+          transparent 55%
+        );
+        mix-blend-mode: screen;
+        opacity: 0.6;
+      }
+      .scan-grid {
+        background-image: linear-gradient(
+            rgba(255, 255, 255, 0.06) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.04) 1px,
+            transparent 1px
+          );
+        background-size: 80px 80px;
+        opacity: 0.2;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes drift {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          transform: translate3d(16px, -12px, 0);
+        }
+      }
+      .animate-fadeup {
+        animation: fadeUp 0.8s ease-out both;
+      }
+      .animate-drift {
+        animation: drift 9s ease-in-out infinite;
+      }
+    </style>
+  </head>
+
+  <body class="font-sans">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
