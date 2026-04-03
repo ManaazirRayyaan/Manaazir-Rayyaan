@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f6f3ee;
+  --surface: rgba(255, 255, 255, 0.84);
+  --surface-strong: rgba(255, 255, 255, 0.94);
+  --foreground: #161514;
+  --muted: #47423d;
+  --border: rgba(22, 21, 20, 0.14);
+  --accent: #f25c2a;
+  --accent-soft: rgba(242, 92, 42, 0.14);
+  --accent-secondary: #0f766e;
+  --shadow: 0 14px 36px rgba(15, 23, 42, 0.08);
+}
+
+.dark {
+  --background: #111111;
+  --surface: rgba(24, 24, 24, 0.9);
+  --surface-strong: rgba(30, 30, 30, 0.96);
+  --foreground: #f3efe8;
+  --muted: #d6cfc6;
+  --border: rgba(243, 239, 232, 0.14);
+  --accent: #ff8258;
+  --accent-soft: rgba(255, 130, 88, 0.16);
+  --accent-secondary: #67d0c7;
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(242, 92, 42, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(15, 118, 110, 0.14), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 40%),
+    var(--background);
+  color: var(--foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+.container-shell {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+
+.glass-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.section-title {
+  @apply text-2xl font-semibold tracking-tight md:text-3xl lg:text-4xl;
+}
+
+.section-copy {
+  color: var(--muted);
+  @apply max-w-2xl text-sm leading-7 md:text-base lg:text-lg;
+}
+
+.noise-overlay {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+}

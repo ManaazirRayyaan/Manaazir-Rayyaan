@@ -1,0 +1,24 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  outputFileTracingRoot: __dirname,
+  allowedDevOrigins: ["192.168.1.2"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
+  },
+};
+
+export default nextConfig;
