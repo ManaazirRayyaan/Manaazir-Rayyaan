@@ -13,7 +13,6 @@ function getClientIp(request: Request) {
   if (forwardedFor) {
     return forwardedFor.split(",")[0]?.trim() ?? "unknown";
   }
-
   return request.headers.get("x-real-ip") ?? "unknown";
 }
 
@@ -32,9 +31,7 @@ function isRateLimited(ip: string) {
 async function saveLeadToSanity(payload: InquiryFormValues) {
   const writeToken = process.env.SANITY_API_WRITE_TOKEN;
 
-  if (!writeToken || !projectId || !dataset) {
-    return;
-  }
+  if (!writeToken || !projectId || !dataset) return;
 
   const writeClient = createClient({
     projectId,
@@ -59,22 +56,27 @@ export async function POST(request: Request) {
     if (isRateLimited(clientIp)) {
       return NextResponse.json(
         {
-          message: "A recent inquiry was already submitted from this network. Please wait a few minutes before trying again.",
+          message:
+            "A recent inquiry was already submitted. Please wait a few minutes.",
         },
-        { status: 429 },
+        { status: 429 }
       );
     }
 
     const parsed = inquirySchema.safeParse(body);
 
     if (!parsed.success) {
-      return NextResponse.json({ message: "Please complete the required fields with valid information." }, { status: 400 });
+      return NextResponse.json(
+        { message: "Please fill all required fields correctly." },
+        { status: 400 }
+      );
     }
 
     if (parsed.data.website) {
-      return NextResponse.json({ message: "Your inquiry has been received." });
+      return NextResponse.json({ message: "Spam detected." });
     }
 
+    // 🔥 ENV VARIABLES
     const apiKey = process.env.RESEND_API_KEY;
     const toEmail = process.env.CONTACT_TO_EMAIL;
     const fromEmail = process.env.CONTACT_FROM_EMAIL;
@@ -82,9 +84,10 @@ export async function POST(request: Request) {
     if (!apiKey || !toEmail || !fromEmail) {
       return NextResponse.json(
         {
-          message: "Email delivery is not configured yet. Add the Resend and contact environment variables first.",
+          message:
+            "Email delivery is not configured yet. Add environment variables.",
         },
-        { status: 500 },
+        { status: 500 }
       );
     }
 
@@ -95,18 +98,22 @@ export async function POST(request: Request) {
       from: fromEmail,
       to: [toEmail],
       replyTo: parsed.data.email,
-      subject: `New freelance inquiry from ${parsed.data.name}`,
+      subject: `New inquiry from ${parsed.data.name}`,
       text: emailBody,
     });
 
+    // Save to Sanity (optional)
     try {
       await saveLeadToSanity(parsed.data);
-    } catch {
-      // Lead persistence should not fail the main email delivery path.
-    }
+    } catch {}
 
-    return NextResponse.json({ message: "Your project inquiry has been sent successfully." });
+    return NextResponse.json({
+      message: "Your message has been sent successfully.",
+    });
   } catch {
-    return NextResponse.json({ message: "Something went wrong while sending your inquiry." }, { status: 500 });
+    return NextResponse.json(
+      { message: "Something went wrong." },
+      { status: 500 }
+    );
   }
 }
