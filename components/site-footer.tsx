@@ -74,14 +74,7 @@ export function SiteFooter({ name, socialLinks }: SiteFooterProps) {
             {/* Glow */}
             <div className="absolute inset-0 rounded-full bg-[#F25C29]/30 blur-3xl" />
 
-            {/* Logo */}
-            <Image
-              src="/Favicon.png"
-              alt="Manaazir Rayyaan Logo"
-              width={160}
-              height={160}
-              className="relative z-10 object-contain drop-shadow-[0_20px_60px_rgba(242,92,41,0.4)]"
-            />
+       
           </div>
         </div>
 
