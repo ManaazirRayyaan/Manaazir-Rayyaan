@@ -14,21 +14,27 @@ export function SiteFooter({ name, socialLinks }: SiteFooterProps) {
   return (
     <footer className="container-shell pb-10 pt-12">
       <div className="relative glass-panel overflow-hidden rounded-3xl px-6 py-8 sm:px-8">
-        <div className="pointer-events-none absolute right-6 top-6 hidden md:block">
-          <div className="relative h-35 w-35">
-            <div className="absolute inset-0 rounded-full bg-[#F25C29]/20 blur-2xl" />
 
+        {/* 🔥 FLOATING LOGO (FIXED POSITION) */}
+        <div className="pointer-events-none absolute right-8 top-1/2 hidden lg:block -translate-y-1/2">
+          <div className="relative h-36 w-36">
+            {/* Glow */}
+            <div className="absolute inset-0 rounded-full bg-[#F25C29]/25 blur-3xl" />
+
+            {/* Logo */}
             <Image
               src="/Favicon.png"
               alt="Manaazir Rayyaan Logo"
               width={140}
               height={140}
-              className="relative z-10 object-contain animate-float drop-shadow-[0_10px_30px_rgba(242,92,41,0.25)]"
+              className="relative z-10 object-contain animate-float drop-shadow-[0_10px_40px_rgba(242,92,41,0.35)]"
             />
           </div>
         </div>
 
+        {/* MAIN CONTENT */}
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:gap-10">
             <div>
               <p className="text-(--muted) text-sm uppercase tracking-[0.28em]">
@@ -56,6 +62,7 @@ export function SiteFooter({ name, socialLinks }: SiteFooterProps) {
             </div>
           </div>
 
+          {/* SOCIAL LINKS */}
           <div className="flex flex-wrap gap-3">
             {normalizedLinks.map((link) => (
               <Link
@@ -70,6 +77,7 @@ export function SiteFooter({ name, socialLinks }: SiteFooterProps) {
             ))}
           </div>
         </div>
+
       </div>
     </footer>
   );
