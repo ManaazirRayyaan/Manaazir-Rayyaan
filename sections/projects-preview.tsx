@@ -3,6 +3,10 @@ import { ProjectCard } from "@/components/project-card";
 import type { Project } from "@/lib/sanity/types";
 
 export function ProjectsPreview({ projects }: { projects: Project[] }) {
+  if (!projects?.length) {
+    return null;
+  }
+
   return (
     <AnimatedSection className="container-shell mt-14 sm:mt-20">
       <div className="flex items-end justify-between gap-4">

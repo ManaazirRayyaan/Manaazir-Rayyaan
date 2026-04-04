@@ -1,5 +1,5 @@
-import { DEFAULT_SOCIAL_LINKS, SOCIAL_LINKS } from "@/lib/constants";
-import type { PageContent, Project, SiteSettings } from "@/lib/sanity/types";
+import { DEFAULT_SOCIAL_LINKS } from "@/lib/constants";
+import type { PageContent, SiteSettings } from "@/lib/sanity/types";
 
 export const fallbackSettings: SiteSettings = {
   name: "Manaazir Rayyaan",
@@ -116,56 +116,3 @@ export const fallbackPages: Record<PageContent["pageType"], PageContent> = {
     ],
   },
 };
-
-export const fallbackProjects: Project[] = [
-  {
-    _id: "project-ongoing-1",
-    title: "Content Operations Platform",
-    slug: "creator-media-hub",
-    problem: "The client needed a faster way to publish and manage media-rich content without relying on a developer for every update.",
-    solution: "I built a CMS-powered platform with reusable content blocks, fast frontend rendering, and a cleaner publishing workflow.",
-    result: "The business got a simpler content pipeline and a website structure that is easier to update, scale, and maintain.",
-    techStack: ["Django", "React", "Sanity", "Tailwind CSS"],
-    status: "ongoing",
-    featured: true,
-    media: [
-      {
-        mediaType: "image",
-        imageUrl: "/ongoing-projects.png",
-        alt: "CMS dashboard style interface with panels and analytics",
-        caption: "CMS-style dashboard interface for creating, managing, and publishing content.",
-      },
-    ],
-    projectUrl: "https://example.com",
-    repoUrl: SOCIAL_LINKS.github,
-    seo: {
-      title: "Creator Media Hub",
-      description: "A CMS-driven storytelling platform for creative portfolios and media publishing.",
-    },
-  },
-  {
-    _id: "project-completed-1",
-    title: "Conversion-Focused Product Website",
-    slug: "studio-commerce-showcase",
-    problem: "The client needed a product website that looked stronger, loaded faster, and made it easier for visitors to take action.",
-    solution: "I redesigned the frontend structure, improved responsiveness, and built a cleaner product presentation flow with stronger calls to action.",
-    result: "The final site presented the offer more clearly and created a stronger foundation for lead generation and sales.",
-    techStack: ["React", "Django", "Tailwind CSS", "MySQL"],
-    status: "completed",
-    featured: true,
-    media: [
-      {
-        mediaType: "image",
-        imageUrl: "/completed-projects.png",
-        alt: "Polished landing page shown on a laptop screen",
-        caption: "Clean landing-page presentation with strong layout, sections, and calls to action.",
-      },
-    ],
-    projectUrl: "https://example.com",
-    repoUrl: SOCIAL_LINKS.github,
-    seo: {
-      title: "Studio Commerce Showcase",
-      description: "A premium storefront experience combining strong visual identity and frontend performance.",
-    },
-  },
-];

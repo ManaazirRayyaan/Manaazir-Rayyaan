@@ -68,16 +68,16 @@ export type PageContent = {
 
 export type Project = {
   _id: string;
-  title: string;
-  slug: string;
-  problem: string;
-  solution: string;
-  result: string;
-  techStack: string[];
+  title?: string;
+  slug?: string | null;
+  problem?: string;
+  solution?: string;
+  result?: string;
+  techStack?: string[];
   status: "ongoing" | "completed";
   featured?: boolean;
   media?: MediaItem[];
-  projectUrl?: string;
+  liveUrl?: string;
   repoUrl?: string;
   seo?: SeoFields;
 };

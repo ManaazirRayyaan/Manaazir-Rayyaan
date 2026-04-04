@@ -50,5 +50,28 @@ export function buildMetadata(source: SeoSource, settings?: SiteSettings, pathna
 }
 
 export function buildProjectMetadata(project: Project, settings?: SiteSettings): Metadata {
-  return buildMetadata(project, settings, `/projects/${project.slug}`);
+  const title = project?.title ? `${project.title} | Manaazir Rayyaan` : "Manaazir Rayyaan | Project";
+  const description =
+    project?.seo?.description ??
+    project?.result ??
+    project?.solution ??
+    settings?.shortIntroduction ??
+    "Project case study by Manaazir Rayyaan.";
+
+  return {
+    ...buildMetadata(
+      {
+        ...project,
+        seo: {
+          ...project?.seo,
+          title,
+          description,
+        },
+      },
+      settings,
+      `/projects/${project.slug}`,
+    ),
+    title,
+    description,
+  };
 }

@@ -74,8 +74,8 @@ export const projectType = defineType({
       of: [{ type: "mediaItem" }],
     }),
     defineField({
-      name: "projectUrl",
-      title: "Live project URL",
+      name: "liveUrl",
+      title: "Live URL",
       type: "url",
     }),
     defineField({

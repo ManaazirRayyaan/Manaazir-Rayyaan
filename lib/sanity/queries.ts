@@ -80,7 +80,7 @@ export const featuredProjectsQuery = groq`
       "imageUrl": image.asset->url,
       "fileUrl": file.asset->url
     },
-    projectUrl,
+    "liveUrl": coalesce(liveUrl, projectUrl),
     repoUrl,
     seo{
       title,
@@ -110,7 +110,7 @@ export const allProjectsQuery = groq`
       "imageUrl": image.asset->url,
       "fileUrl": file.asset->url
     },
-    projectUrl,
+    "liveUrl": coalesce(liveUrl, projectUrl),
     repoUrl,
     seo{
       title,
@@ -140,7 +140,7 @@ export const projectBySlugQuery = groq`
       "imageUrl": image.asset->url,
       "fileUrl": file.asset->url
     },
-    projectUrl,
+    "liveUrl": coalesce(liveUrl, projectUrl),
     repoUrl,
     seo{
       title,

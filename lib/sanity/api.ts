@@ -1,6 +1,6 @@
 import { normalizeSocialLinks } from "@/lib/constants";
 import { allProjectsQuery, featuredProjectsQuery, pageByTypeQuery, projectBySlugQuery, settingsQuery } from "@/lib/sanity/queries";
-import { fallbackPages, fallbackProjects, fallbackSettings } from "@/lib/sanity/fallback-data";
+import { fallbackPages, fallbackSettings } from "@/lib/sanity/fallback-data";
 import { sanityFetch } from "@/lib/sanity/client";
 import type { PageContent, Project, SiteSettings } from "@/lib/sanity/types";
 
@@ -34,14 +34,14 @@ export async function getPageContent(pageType: PageContent["pageType"]) {
 export async function getFeaturedProjects() {
   return sanityFetch<Project[]>({
     query: featuredProjectsQuery,
-    fallback: fallbackProjects.filter((project) => project.featured),
+    fallback: [],
   });
 }
 
 export async function getAllProjects() {
   return sanityFetch<Project[]>({
     query: allProjectsQuery,
-    fallback: fallbackProjects,
+    fallback: [],
   });
 }
 
@@ -49,6 +49,6 @@ export async function getProjectBySlug(slug: string) {
   return sanityFetch<Project | null>({
     query: projectBySlugQuery,
     params: { slug },
-    fallback: fallbackProjects.find((project) => project.slug === slug) ?? null,
+    fallback: null,
   });
 }

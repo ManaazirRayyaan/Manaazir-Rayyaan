@@ -11,8 +11,14 @@ export function HeroSection({ page, settings }: { page: PageContent; settings: S
           <div className="max-w-4xl">
             <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] sm:text-sm sm:tracking-[0.28em]">Freelance Django + React Developer</p>
             <h1 className="mt-3 font-[var(--font-display)] text-3xl font-semibold tracking-tight sm:mt-4 sm:text-5xl md:text-6xl lg:text-7xl">
-              I build scalable web applications using Django & React
+              Manaazir Rayyaan
             </h1>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-[var(--foreground)] sm:text-lg md:text-xl md:leading-8">
+              Hi, I&rsquo;m Manaazir Rayyaan — a full stack developer building scalable web applications and modern digital products.
+            </p>
+            <h2 className="mt-4 font-[var(--font-display)] text-2xl font-semibold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+              I build scalable web applications using Django & React
+            </h2>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-[var(--muted)] sm:text-lg md:text-xl md:leading-8">
               Helping businesses launch fast, reliable digital products.
             </p>
