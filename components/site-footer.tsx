@@ -26,7 +26,7 @@ export function SiteFooter({ name, socialLinks }: { name: string; socialLinks: S
             <div className="flex justify-center lg:justify-end">
               <div className="rounded-[1.25rem] border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-[0_12px_30px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:scale-105">
                 <Image
-                  src="/my-website-logo.png"
+                  src="/mywebsitelogo.png"
                   alt="Manaazir Rayyaan Logo"
                   width={160}
                   height={160}
