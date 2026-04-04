@@ -5,5 +5,5 @@ export const client = createClient({
   projectId: projectId || "demo",
   dataset,
   apiVersion,
-  useCdn: true,
+  useCdn: false, // 🔥 IMPORTANT: always fresh data
 });

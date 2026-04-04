@@ -6,8 +6,12 @@ import { buildMetadata } from "@/lib/utils/site";
 import { PageIntro } from "@/sections/page-intro";
 import { ProjectCard } from "@/components/project-card";
 
+// 🔥 IMPORTANT: disables caching
+export const revalidate = 0;
+
 export async function generateMetadata() {
   const settings = await getSiteSettings();
+
   return buildMetadata(
     {
       title: "Projects",
@@ -25,71 +29,89 @@ export async function generateMetadata() {
 }
 
 export default async function ProjectsPage() {
-  const [settings, projects] = await Promise.all([getSiteSettings(), getAllProjects()]);
+  const [settings, projects] = await Promise.all([
+    getSiteSettings(),
+    getAllProjects(),
+  ]);
 
-  if (!projects?.length) {
-    return (
-      <main className="pb-6">
-        <SiteHeader name={settings.name} />
-        <PageIntro
-          eyebrow="Projects"
-          title="Projects That Show How I Solve Business Problems"
-          copy="These case studies are structured around the problem, the solution delivered, and the final result."
-        />
-        <section className="container-shell mt-10 sm:mt-12">
-          <p className="text-sm text-[var(--muted)]">No projects available yet.</p>
-        </section>
-        <CtaSection title="Want results like these for your business?" copy="If you need a developer to build, improve, or stabilize a web product, send me the details." />
-        <SiteFooter name={settings.name} socialLinks={settings.socialLinks} />
-      </main>
-    );
-  }
+  // 🔥 Debug (optional - remove later)
+  console.log("PROJECTS:", projects);
 
-  const ongoingProjects = projects.filter((project) => project.status === "ongoing");
-  const completedProjects = projects.filter((project) => project.status === "completed");
+  const ongoingProjects =
+    projects?.filter((project) => project.status === "ongoing") || [];
+
+  const completedProjects =
+    projects?.filter((project) => project.status === "completed") || [];
 
   return (
     <main className="pb-6">
       <SiteHeader name={settings.name} />
+
       <PageIntro
         eyebrow="Projects"
         title="Projects That Show How I Solve Business Problems"
         copy="These case studies are structured around the problem, the solution delivered, and the final result."
       />
+
       <section className="container-shell mt-10 grid gap-8 sm:mt-12 sm:gap-10 xl:grid-cols-2">
+        {/* ONGOING */}
         <div>
           <div className="mb-6">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] sm:text-sm sm:tracking-[0.28em]">Ongoing Projects</p>
-            <h2 className="mt-3 text-2xl font-semibold sm:text-3xl">Current client work and active product builds.</h2>
+            <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] sm:text-sm sm:tracking-[0.28em]">
+              Ongoing Projects
+            </p>
+            <h2 className="mt-3 text-2xl font-semibold sm:text-3xl">
+              Current client work and active product builds.
+            </h2>
           </div>
-          {ongoingProjects.length ? (
+
+          {ongoingProjects.length > 0 ? (
             <div className="grid gap-6">
               {ongoingProjects.map((project) => (
                 <ProjectCard key={project._id} project={project} />
               ))}
             </div>
           ) : (
-            <p className="text-sm text-[var(--muted)]">No ongoing projects available yet.</p>
+            <p className="text-sm text-[var(--muted)]">
+              No ongoing projects available yet.
+            </p>
           )}
         </div>
+
+        {/* COMPLETED */}
         <div>
           <div className="mb-6">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] sm:text-sm sm:tracking-[0.28em]">Completed Projects</p>
-            <h2 className="mt-3 text-2xl font-semibold sm:text-3xl">Delivered projects with a clear business outcome.</h2>
+            <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] sm:text-sm sm:tracking-[0.28em]">
+              Completed Projects
+            </p>
+            <h2 className="mt-3 text-2xl font-semibold sm:text-3xl">
+              Delivered projects with a clear business outcome.
+            </h2>
           </div>
-          {completedProjects.length ? (
+
+          {completedProjects.length > 0 ? (
             <div className="grid gap-6">
               {completedProjects.map((project) => (
                 <ProjectCard key={project._id} project={project} />
               ))}
             </div>
           ) : (
-            <p className="text-sm text-[var(--muted)]">No completed projects available yet.</p>
+            <p className="text-sm text-[var(--muted)]">
+              No completed projects available yet.
+            </p>
           )}
         </div>
       </section>
-      <CtaSection title="Want results like these for your business?" copy="If you need a developer to build, improve, or stabilize a web product, send me the details." />
-      <SiteFooter name={settings.name} socialLinks={settings.socialLinks} />
+
+      <CtaSection
+        title="Want results like these for your business?"
+        copy="If you need a developer to build, improve, or stabilize a web product, send me the details."
+      />
+
+      <SiteFooter
+        name={settings.name}
+        socialLinks={settings.socialLinks}
+      />
     </main>
   );
 }
