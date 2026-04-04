@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { normalizeSocialLinks } from "@/lib/constants";
 import type { SocialLink } from "@/lib/sanity/types";
@@ -14,8 +13,9 @@ export function SiteFooter({ name, socialLinks }: SiteFooterProps) {
   return (
     <footer className="container-shell pb-10 pt-12">
       <div className="glass-panel rounded-3xl px-6 py-8 sm:px-8">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center">
-          <div>
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:gap-10">
+            <div>
             <p className="text-(--muted) text-sm uppercase tracking-[0.28em]">
               Freelance Web Development
             </p>
@@ -39,36 +39,20 @@ export function SiteFooter({ name, socialLinks }: SiteFooterProps) {
               </span>
             </div>
           </div>
+          </div>
 
-          <div className="flex flex-col items-center gap-5 lg:items-end">
-            <div className="flex w-full justify-center lg:justify-end">
-              <div className="pointer-events-none relative h-40 w-40">
-                <div className="absolute inset-0 rounded-full bg-[#F25C29]/30 blur-3xl" />
-                <div className="absolute inset-3 rounded-[1.75rem] border border-(--border) bg-[var(--surface-strong)]/90 shadow-[0_16px_40px_rgba(15,23,42,0.1)]" />
-
-                <Image
-                  src="/Favicon.png"
-                  alt="Manaazir Rayyaan Logo"
-                  width={160}
-                  height={160}
-                  className="relative z-10 object-contain drop-shadow-[0_20px_60px_rgba(242,92,41,0.4)]"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-3 lg:justify-end">
-              {normalizedLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border-(--border) text-(--muted) hover:text-(--foreground) rounded-full border px-4 py-2 text-sm transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+          <div className="flex flex-wrap gap-3">
+            {normalizedLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-(--border) text-(--muted) hover:text-(--foreground) rounded-full border px-4 py-2 text-sm transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
