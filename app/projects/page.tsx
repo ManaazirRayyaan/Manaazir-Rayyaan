@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/utils/site";
 import { PageIntro } from "@/sections/page-intro";
 import { ProjectCard } from "@/components/project-card";
 
-// 🔥 IMPORTANT: disables caching
+// Disable caching for fresh Sanity data
 export const revalidate = 0;
 
 export async function generateMetadata() {
@@ -28,20 +28,25 @@ export async function generateMetadata() {
   );
 }
 
+// Helper to normalize status safely
+const normalizeStatus = (status?: string) =>
+  status?.toLowerCase().trim();
+
 export default async function ProjectsPage() {
   const [settings, projects] = await Promise.all([
     getSiteSettings(),
     getAllProjects(),
   ]);
 
-  // 🔥 Debug (optional - remove later)
-  console.log("PROJECTS:", projects);
-
   const ongoingProjects =
-    projects?.filter((project) => project.status === "ongoing") || [];
+    projects?.filter(
+      (project) => normalizeStatus(project.status) === "ongoing"
+    ) || [];
 
   const completedProjects =
-    projects?.filter((project) => project.status === "completed") || [];
+    projects?.filter(
+      (project) => normalizeStatus(project.status) === "completed"
+    ) || [];
 
   return (
     <main className="pb-6">
@@ -54,7 +59,8 @@ export default async function ProjectsPage() {
       />
 
       <section className="container-shell mt-10 grid gap-8 sm:mt-12 sm:gap-10 xl:grid-cols-2">
-        {/* ONGOING */}
+        
+        {/* Ongoing Projects */}
         <div>
           <div className="mb-6">
             <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] sm:text-sm sm:tracking-[0.28em]">
@@ -78,7 +84,7 @@ export default async function ProjectsPage() {
           )}
         </div>
 
-        {/* COMPLETED */}
+        {/* Completed Projects */}
         <div>
           <div className="mb-6">
             <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] sm:text-sm sm:tracking-[0.28em]">
@@ -101,6 +107,7 @@ export default async function ProjectsPage() {
             </p>
           )}
         </div>
+
       </section>
 
       <CtaSection
