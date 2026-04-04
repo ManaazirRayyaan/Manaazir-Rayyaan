@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageTransition } from "@/components/page-transition";
 import { DM_Sans, Space_Grotesk } from "next/font/google";
 import { PersonSchema } from "@/components/schema";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -64,7 +65,7 @@ export default function RootLayout({
       <body className={`${bodyFont.variable} ${displayFont.variable} font-(--font-body) antialiased`}>
         <ThemeProvider>
           <PersonSchema />
-          {children}
+          <PageTransition>{children}</PageTransition>
         </ThemeProvider>
       </body>
     </html>
