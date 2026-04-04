@@ -4,6 +4,17 @@ export type SocialLink = {
   url: string;
 };
 
+export type LeadStatus = "New" | "Contacted" | "Closed";
+
+export type Lead = {
+  _id: string;
+  name: string;
+  email: string;
+  message: string;
+  submittedAt: string;
+  status?: LeadStatus;
+};
+
 export type MediaItem = {
   _key?: string;
   mediaType: "image" | "audio" | "video";

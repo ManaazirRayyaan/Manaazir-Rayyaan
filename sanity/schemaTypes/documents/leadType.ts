@@ -20,11 +20,32 @@ export const leadType = defineType({
       type: "datetime",
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: "status",
+      title: "Status",
+      type: "string",
+      options: {
+        list: [
+          { title: "New", value: "New" },
+          { title: "Contacted", value: "Contacted" },
+          { title: "Closed", value: "Closed" },
+        ],
+      },
+      initialValue: "New",
+      validation: (rule) => rule.required(),
+    }),
   ],
   preview: {
     select: {
       title: "name",
       subtitle: "email",
+      status: "status",
+    },
+    prepare({ title, subtitle, status }) {
+      return {
+        title,
+        subtitle: `${subtitle} • ${status ?? "New"}`,
+      };
     },
   },
 });

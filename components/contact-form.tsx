@@ -91,7 +91,7 @@ export function ContactForm() {
           message: result?.message || "Failed to send message.",
         });
       }
-    } catch (error) {
+    } catch {
       setStatus({
         type: "error",
         message: "Network error. Please try again later.",
@@ -186,7 +186,7 @@ export function ContactForm() {
           disabled={isPending}
           className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-medium text-white transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto sm:px-6"
         >
-          {isPending ? "Sending..." : "Hire Me"}
+          {isPending ? "Sending..." : "Start a Project"}
         </button>
 
         {/* Status Message */}

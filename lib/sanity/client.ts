@@ -1,15 +1,11 @@
-import { createClient } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
+import { client } from "@/sanity/lib/client";
 import { apiVersion, dataset, hasSanityEnv, projectId, useCdn } from "@/lib/sanity/env";
 
-export const client = createClient({
+const builder = createImageUrlBuilder({
   projectId: projectId || "demo",
   dataset,
-  apiVersion,
-  useCdn,
 });
-
-const builder = imageUrlBuilder(client);
 
 export function urlFor(source: Parameters<typeof builder.image>[0]) {
   return builder.image(source);
@@ -29,7 +25,14 @@ export async function sanityFetch<QueryResponse>({
   }
 
   try {
-    const data = await client.fetch<QueryResponse>(query, params);
+    const data = await client
+      .withConfig({
+        projectId: projectId || "demo",
+        dataset,
+        apiVersion,
+        useCdn,
+      })
+      .fetch<QueryResponse>(query, params);
     if (data === null || data === undefined) {
       return fallback;
     }

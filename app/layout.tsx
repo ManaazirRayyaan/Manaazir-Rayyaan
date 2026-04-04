@@ -14,14 +14,25 @@ const displayFont = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Modern portfolio website powered by Next.js, Tailwind CSS, and Sanity CMS.",
+  title: "Manaazir Rayyaan | Developer Portfolio",
+  description:
+    "Modern full stack developer portfolio built with Next.js, Sanity CMS, and Tailwind CSS.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${bodyFont.variable} ${displayFont.variable} font-[var(--font-body)] antialiased`}>
+      <body
+        className={`${bodyFont.variable} ${displayFont.variable} font-[var(--font-body)] antialiased`}
+      >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
