@@ -122,3 +122,10 @@ export default async function ProjectsPage() {
     </main>
   );
 }
+
+const [settings, projects] = await Promise.all([
+  getSiteSettings(),
+  getAllProjects(),
+]);
+
+console.log("Projects fetched:", JSON.stringify(projects, null, 2)); // 👈 add this

@@ -1,7 +1,13 @@
 import { normalizeSocialLinks } from "@/lib/constants";
-import { allProjectsQuery, featuredProjectsQuery, pageByTypeQuery, projectBySlugQuery, settingsQuery } from "@/lib/sanity/queries";
+import {
+  allProjectsQuery,
+  featuredProjectsQuery,
+  pageByTypeQuery,
+  projectBySlugQuery,
+  settingsQuery,
+} from "@/lib/sanity/queries";
 import { fallbackPages, fallbackSettings } from "@/lib/sanity/fallback-data";
-import { sanityFetch } from "@/lib/sanity/client";
+import { sanityFetch } from "@/sanity/lib/client"; // ← use the working client
 import type { PageContent, Project, SiteSettings } from "@/lib/sanity/types";
 
 export async function getSiteSettings() {
