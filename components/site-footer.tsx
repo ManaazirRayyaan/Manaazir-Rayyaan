@@ -30,7 +30,7 @@ export function SiteFooter({ name, socialLinks }: SiteFooterProps) {
             {/* LEFT CONTENT */}
             <div className="flex flex-col gap-4">
               <p className="text-(--muted) text-sm uppercase tracking-[0.28em]">
-                Freelance Web Development
+                Digital Services Provider
               </p>
 
               <h2 className="text-2xl font-semibold">{name}</h2>
@@ -42,7 +42,7 @@ export function SiteFooter({ name, socialLinks }: SiteFooterProps) {
 
               <div className="text-(--muted) flex flex-wrap gap-2 text-xs uppercase tracking-[0.18em]">
                 <span className="border-(--border) rounded-full border px-3 py-2">
-                  Available for freelance work
+                  Available for  work
                 </span>
                 <span className="border-(--border) rounded-full border px-3 py-2">
                   Based in India

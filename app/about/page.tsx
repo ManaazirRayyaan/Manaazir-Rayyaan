@@ -130,7 +130,7 @@ export default async function AboutPage() {
       <section className="container-shell mt-10 sm:mt-12">
         <div className="rounded-[1.1rem] border border-[var(--border)] bg-[var(--surface)] p-5 sm:rounded-[1.5rem] sm:p-6">
           <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] sm:text-sm sm:tracking-[0.28em]">Experience</p>
-          <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">Freelance work built around reliability, speed, and practical delivery.</h2>
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">My work is built around reliability, speed, and practical delivery.</h2>
           <p className="mt-4 max-w-4xl text-sm leading-7 text-[var(--foreground)]/84 sm:text-base sm:leading-8">
             I work on business websites, dashboards, APIs, content systems, and internal tools. My focus is on delivering products that are usable, maintainable, and ready for real operations after launch.
           </p>
@@ -201,7 +201,7 @@ export default async function AboutPage() {
 
       <section className="container-shell mt-10 sm:mt-12">
         <div className="rounded-[1.1rem] border border-[var(--border)] bg-[var(--surface)] px-5 py-8 text-center sm:rounded-[1.5rem] sm:px-6 sm:py-10">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] sm:text-sm sm:tracking-[0.28em]">Call to Action</p>
+          <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] sm:text-sm sm:tracking-[0.28em]">I can help your Business !</p>
           <h2 className="mx-auto mt-3 max-w-3xl text-2xl font-semibold tracking-tight sm:text-4xl">
             Need a developer who can build your product properly the first time?
           </h2>

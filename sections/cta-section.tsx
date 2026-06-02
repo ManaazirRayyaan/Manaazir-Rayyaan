@@ -13,7 +13,7 @@ export function CtaSection({
       <div className="glass-panel rounded-[1.25rem] px-5 py-7 sm:rounded-[1.5rem] sm:px-8 sm:py-9">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] sm:text-sm sm:tracking-[0.28em]">Call to Action</p>
+            <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] sm:text-sm sm:tracking-[0.28em]">I can help your Business !</p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
             <p className="mt-4 text-sm leading-7 text-[var(--foreground)]/88 sm:text-base sm:leading-8">{copy}</p>
           </div>

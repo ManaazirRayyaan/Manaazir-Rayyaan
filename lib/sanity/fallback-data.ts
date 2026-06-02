@@ -3,11 +3,11 @@ import type { PageContent, SiteSettings } from "@/lib/sanity/types";
 
 export const fallbackSettings: SiteSettings = {
   name: "Manaazir Rayyaan",
-  role: "Freelance Django & React Developer",
+  role: "Digital Product Developer & Brand Strategist",
   shortIntroduction:
-    "I help businesses build fast, reliable web applications that support real operations, customer experiences, and growth.",
+    "I help businesses build fast, reliable web applications and grow their brand presence through strategic digital marketing.",
   location: "India",
-  email: "hello@example.com",
+  email: "rayyaanmanaazir@gmail.com",
   defaultOgImage:
     "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
   socialLinks: DEFAULT_SOCIAL_LINKS,
@@ -15,7 +15,7 @@ export const fallbackSettings: SiteSettings = {
 
 export const fallbackPages: Record<PageContent["pageType"], PageContent> = {
   home: {
-    title: "I build scalable web applications using Django & React",
+    title: "I build scalable web applications",
     pageType: "home",
     subtitle: "Helping businesses launch fast, reliable digital products",
     intro:
