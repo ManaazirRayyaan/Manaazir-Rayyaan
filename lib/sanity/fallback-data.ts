@@ -15,7 +15,7 @@ export const fallbackSettings: SiteSettings = {
 
 export const fallbackPages: Record<PageContent["pageType"], PageContent> = {
   home: {
-    title: "I build scalable web applications",
+    title: "Manaazir Rayyaan | Digital Strategist and Full Stack Engineer",
     pageType: "home",
     subtitle: "Helping businesses launch fast, reliable digital products",
     intro:
