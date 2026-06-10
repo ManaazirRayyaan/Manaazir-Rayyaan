@@ -30,14 +30,14 @@ cp .env.example .env.local
 npm run dev
 ```
 
-4. Open the portfolio at [http://localhost:3000](http://localhost:3000).
+4. Open the portfolio at [www.manaazirrayyaan.in](www.manaazirrayyaan.in).
 
-5. Open Sanity Studio at [http://localhost:3000/studio](http://localhost:3000/studio).
+5. Open Sanity Studio at [www.manaazirrayyaan.in/studio](www.manaazirrayyaan.in/studio).
 
 ## Environment Variables
 
 ```bash
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_SITE_URL=www.manaazirrayyaan.in
 NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
 NEXT_PUBLIC_SANITY_DATASET=production
 NEXT_PUBLIC_SANITY_API_VERSION=2025-03-01

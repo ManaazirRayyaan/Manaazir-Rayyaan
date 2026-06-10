@@ -10,8 +10,8 @@ import { cn } from "@/lib/utils/cn";
 
 const navigation = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
+  { href: "/testimonials", label: "Testimonials" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -19,6 +19,14 @@ export function SiteHeader({ name }: { name: string }) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const brandName = name || "Portfolio";
+  const navItems = navigation.map((item) =>
+    item.href === "/testimonials" && pathname === "/"
+      ? {
+          ...item,
+          href: "/#testimonials",
+        }
+      : item,
+  );
 
   useEffect(() => {
     setIsOpen(false);
@@ -34,8 +42,8 @@ export function SiteHeader({ name }: { name: string }) {
             </Link>
             <div className="flex items-center gap-2">
               <nav className="hidden items-center gap-1 lg:flex">
-                {navigation.map((item) => {
-                  const active = pathname === item.href;
+                {navItems.map((item) => {
+                  const active = item.href === "/projects" ? pathname.startsWith("/projects") : pathname === item.href;
                   return (
                     <Link
                       key={item.href}
@@ -44,6 +52,7 @@ export function SiteHeader({ name }: { name: string }) {
                         "inline-flex min-h-11 items-center rounded-full px-4 py-2 text-sm transition-colors",
                         active ? "bg-[var(--accent)] text-white" : "text-[var(--muted)] hover:text-[var(--foreground)]",
                       )}
+                      onClick={() => setIsOpen(false)}
                     >
                       {item.label}
                     </Link>
@@ -75,8 +84,8 @@ export function SiteHeader({ name }: { name: string }) {
                 className="mt-4 w-full overflow-hidden rounded-xl bg-[var(--background)] p-3 shadow-md lg:hidden sm:p-4"
               >
                 <nav className="space-y-4">
-                  {navigation.map((item) => {
-                    const active = pathname === item.href;
+                  {navItems.map((item) => {
+                    const active = item.href === "/projects" ? pathname.startsWith("/projects") : pathname === item.href;
                     return (
                       <Link
                         key={item.href}
@@ -85,6 +94,7 @@ export function SiteHeader({ name }: { name: string }) {
                           "flex min-h-11 w-full items-center rounded-xl px-4 py-3 text-sm transition-colors",
                           active ? "bg-[var(--accent)] text-white" : "bg-[var(--surface-strong)] text-[var(--foreground)]",
                         )}
+                        onClick={() => setIsOpen(false)}
                       >
                         {item.label}
                       </Link>

@@ -31,6 +31,26 @@ export type SeoFields = {
   ogImage?: string;
 };
 
+export type Testimonial = {
+  _id: string;
+  clientName: string;
+  clientRole?: string;
+  companyName?: string;
+  clientPhotoUrl?: string;
+  clientPhotoAlt?: string;
+  content: string;
+  rating: number;
+  featured?: boolean;
+  projectReference?: {
+    _id: string;
+    title?: string;
+    slug?: string | null;
+  };
+  date?: string;
+  displayOrder?: number;
+  published?: boolean;
+};
+
 export type ContentSection = {
   _key?: string;
   eyebrow?: string;
@@ -76,6 +96,8 @@ export type Project = {
   techStack?: string[];
   status: "ongoing" | "completed";
   featured?: boolean;
+  testimonials?: Testimonial[];
+  relatedTestimonials?: Testimonial[];
   media?: MediaItem[];
   liveUrl?: string;
   repoUrl?: string;

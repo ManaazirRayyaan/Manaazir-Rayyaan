@@ -1,5 +1,5 @@
 import { DEFAULT_SOCIAL_LINKS } from "@/lib/constants";
-import type { PageContent, SiteSettings } from "@/lib/sanity/types";
+import type { PageContent, SiteSettings, Testimonial } from "@/lib/sanity/types";
 
 export const fallbackSettings: SiteSettings = {
   name: "Manaazir Rayyaan",
@@ -12,6 +12,8 @@ export const fallbackSettings: SiteSettings = {
     "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
   socialLinks: DEFAULT_SOCIAL_LINKS,
 };
+
+export const fallbackTestimonials: Testimonial[] = [];
 
 export const fallbackPages: Record<PageContent["pageType"], PageContent> = {
   home: {

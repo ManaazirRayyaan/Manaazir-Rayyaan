@@ -68,6 +68,18 @@ export const projectType = defineType({
       initialValue: false,
     }),
     defineField({
+      name: "testimonials",
+      title: "Client Testimonials",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "testimonial" }],
+        },
+      ],
+      description: "Curated testimonial references for this project. Testimonials can also link back to this project from the testimonial document.",
+    }),
+    defineField({
       name: "media",
       title: "Media gallery",
       type: "array",

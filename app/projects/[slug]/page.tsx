@@ -5,6 +5,7 @@ import { CtaSection } from "@/sections/cta-section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { RichMedia } from "@/components/rich-media";
+import { ProjectTestimonials } from "@/components/project-testimonials";
 import { getAllProjects, getProjectBySlug, getSiteSettings } from "@/lib/sanity/api";
 import { buildProjectMetadata } from "@/lib/utils/site";
 
@@ -91,6 +92,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </div>
           </div>
         </div>
+        <ProjectTestimonials testimonials={project.testimonials} relatedTestimonials={project.relatedTestimonials} />
       </section>
       <CtaSection title="Need a similar result for your business?" copy="If you want a custom web application, cleaner backend logic, or a more effective frontend experience, get in touch." />
       <SiteFooter name={settings.name} socialLinks={settings.socialLinks} />

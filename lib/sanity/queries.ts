@@ -1,5 +1,25 @@
 import groq from "groq";
 
+const testimonialFields = groq`
+  _id,
+  clientName,
+  clientRole,
+  companyName,
+  "clientPhotoUrl": clientPhoto.asset->url,
+  "clientPhotoAlt": clientPhoto.alt,
+  content,
+  rating,
+  featured,
+  date,
+  displayOrder,
+  published,
+  projectReference->{
+    _id,
+    title,
+    "slug": slug.current
+  }
+`;
+
 export const settingsQuery = groq`
   *[_type == "siteSettings"][0]{
     name,
@@ -72,6 +92,9 @@ export const featuredProjectsQuery = groq`
     techStack,
     status,
     featured,
+    testimonials[]->{
+      ${testimonialFields}
+    },
     media[]{
       _key,
       mediaType,
@@ -102,6 +125,9 @@ export const allProjectsQuery = groq`
     techStack,
     status,
     featured,
+    testimonials[]->{
+      ${testimonialFields}
+    },
     media[]{
       _key,
       mediaType,
@@ -132,6 +158,16 @@ export const projectBySlugQuery = groq`
     techStack,
     status,
     featured,
+    testimonials[]->{
+      ${testimonialFields}
+    },
+    "relatedTestimonials": *[
+      _type == "testimonial" &&
+      published != false &&
+      projectReference._ref == ^._id
+    ] | order(coalesce(displayOrder, 9999) asc, date desc, _createdAt desc){
+      ${testimonialFields}
+    },
     media[]{
       _key,
       mediaType,
@@ -148,5 +184,24 @@ export const projectBySlugQuery = groq`
       noIndex,
       "ogImage": ogImage.asset->url
     }
+  }
+`;
+
+export const featuredTestimonialsQuery = groq`
+  *[
+    _type == "testimonial" &&
+    featured == true &&
+    published != false
+  ] | order(coalesce(displayOrder, 9999) asc, date desc, _createdAt desc){
+    ${testimonialFields}
+  }
+`;
+
+export const allTestimonialsQuery = groq`
+  *[
+    _type == "testimonial" &&
+    published != false
+  ] | order(coalesce(displayOrder, 9999) asc, date desc, _createdAt desc){
+    ${testimonialFields}
   }
 `;

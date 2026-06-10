@@ -1,6 +1,6 @@
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { getFeaturedProjects, getPageContent, getSiteSettings } from "@/lib/sanity/api";
+import { getFeaturedProjects, getFeaturedTestimonials, getPageContent, getSiteSettings } from "@/lib/sanity/api";
 import { buildMetadata } from "@/lib/utils/site";
 import { CtaSection } from "@/sections/cta-section";
 import { ContentSections } from "@/sections/content-sections";
@@ -8,6 +8,7 @@ import { HeroSection } from "@/sections/hero-section";
 import { ProjectsPreview } from "@/sections/projects-preview";
 import { ServicesSection } from "@/sections/services-section";
 import { SocialLinks } from "@/sections/social-links";
+import { TestimonialsSection } from "@/sections/testimonials-section";
 
 export async function generateMetadata() {
   const [settings, page] = await Promise.all([getSiteSettings(), getPageContent("home")]);
@@ -15,10 +16,11 @@ export async function generateMetadata() {
 }
 
 export default async function HomePage() {
-  const [settings, page, featuredProjects] = await Promise.all([
+  const [settings, page, featuredProjects, featuredTestimonials] = await Promise.all([
     getSiteSettings(),
     getPageContent("home"),
     getFeaturedProjects(),
+    getFeaturedTestimonials(),
   ]);
 
   return (
@@ -31,6 +33,7 @@ export default async function HomePage() {
       </section>
       <ServicesSection />
       <ProjectsPreview projects={featuredProjects} />
+      <TestimonialsSection testimonials={featuredTestimonials} />
       <CtaSection title="Have a project in mind? Let’s build it." copy="If you need a web app, API, dashboard, or business website, I’m available to help." />
       <ContentSections sections={page.contentSections} />
       <CtaSection title="Ready to talk about your project?" copy="Send a message and I’ll reply with the next step, recommended approach, or a clear starting point." />

@@ -6,6 +6,7 @@ import { leadType } from "./documents/leadType";
 import { projectType } from "./documents/projectType";
 import { sitePageType } from "./documents/sitePageType";
 import { siteSettingsType } from "./documents/siteSettingsType";
+import { testimonialType } from "./documents/testimonialType";
 import { contentSectionType } from "./objects/contentSectionType";
 import { mediaItemType } from "./objects/mediaItemType";
 import { seoType } from "./objects/seoType";
@@ -19,6 +20,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     siteSettingsType,
     sitePageType,
     projectType,
+    testimonialType,
     leadType,
     contentSectionType,
     mediaItemType,

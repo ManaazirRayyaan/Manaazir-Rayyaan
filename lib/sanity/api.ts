@@ -1,14 +1,16 @@
 import { normalizeSocialLinks } from "@/lib/constants";
 import {
+  allTestimonialsQuery,
   allProjectsQuery,
   featuredProjectsQuery,
+  featuredTestimonialsQuery,
   pageByTypeQuery,
   projectBySlugQuery,
   settingsQuery,
 } from "@/lib/sanity/queries";
-import { fallbackPages, fallbackSettings } from "@/lib/sanity/fallback-data";
+import { fallbackPages, fallbackSettings, fallbackTestimonials } from "@/lib/sanity/fallback-data";
 import { sanityFetch } from "@/sanity/lib/client"; // ← use the working client
-import type { PageContent, Project, SiteSettings } from "@/lib/sanity/types";
+import type { PageContent, Project, SiteSettings, Testimonial } from "@/lib/sanity/types";
 
 export async function getSiteSettings() {
   const settings = await sanityFetch<SiteSettings>({
@@ -41,6 +43,20 @@ export async function getFeaturedProjects() {
   return sanityFetch<Project[]>({
     query: featuredProjectsQuery,
     fallback: [],
+  });
+}
+
+export async function getFeaturedTestimonials() {
+  return sanityFetch<Testimonial[]>({
+    query: featuredTestimonialsQuery,
+    fallback: fallbackTestimonials,
+  });
+}
+
+export async function getAllTestimonials() {
+  return sanityFetch<Testimonial[]>({
+    query: allTestimonialsQuery,
+    fallback: fallbackTestimonials,
   });
 }
 
