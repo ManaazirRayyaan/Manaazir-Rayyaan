@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { Project, SiteSettings } from "@/lib/sanity/types";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "www.manaazirrayyaan.in";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.manaazirrayyaan.in";
 
 type SeoSource = {
   seo?: {
@@ -22,6 +22,8 @@ export function buildMetadata(source: SeoSource, settings?: SiteSettings, pathna
     source.subtitle ??
     settings?.shortIntroduction ??
     "Portfolio website built with Next.js and Sanity CMS.";
+  console.log("pathname:", pathname);
+  console.log("siteUrl:", siteUrl);  
   const canonicalUrl = new URL(pathname, siteUrl).toString();
   const image = source.seo?.ogImage ?? settings?.defaultOgImage;
 
